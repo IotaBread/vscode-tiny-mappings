@@ -1,0 +1,196 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Tiny V2 Mappings",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#header"
+		},
+		{
+			"include": "#names"
+		},
+		{
+			"include": "#descriptors"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"match": "(?<=^\t*)c|(?<=^\t)m|(?<=^\t\t)p|(?<=^\t\t)v|(?<=^\t)f",
+			"name": "keyword.other.tinyv2"
+		},
+		"header": {
+			"begin": "^tiny",
+			"end": "(?=^[^\t])",
+			"beginCaptures": {
+				"0": {
+					"name": "constant.language.tiny.tinyv2"
+				}
+			},
+			"patterns": [
+				{
+					"match": "(?<=^tiny)\t(\\d+)\t(\\d+)",
+					"captures": {
+						"1": {
+							"name": "constant.numeric.major-version.tinyv2"
+						},
+						"2": {
+							"name": "constant.numeric.minor-version.tinyv2"
+						}
+					}
+				},
+				{
+					"match": "(?<=^tiny(?:\t\\d+)+(?:\t[\\w\/]+)\t(?:[\\w\/]+\t)*)[\\w\/]+",
+					"name": "entity.name.tag.namespace.tinyv2"
+				},
+				{
+					"match": "(?<=^\t)([\\w\/]+)(?:\t([\\w\/]+))?",
+					"captures": {
+						"1": {
+							"name": "entity.name.tag.property.tinyv2"
+						},
+						"2": {
+							"name": "string.unquoted.property-value.tinyv2"
+						}
+					}
+				}
+			]
+		},
+		"names": {
+			"patterns": [
+				{
+					"include": "#class-name"
+				},
+				{
+					"include": "#field-name"
+				},
+				{
+					"include": "#method-name"
+				},
+				{
+					"include": "#parameter-name"
+				},
+				{
+					"include": "#variable-name"
+				}
+			]
+		},
+		"class-name": {
+			"match": "(?<=^c\t(?:[A-z][\\w\/$]*\t)*)[A-z][\\w\/$]*",
+			"name": "entity.name.class.tinyv2"
+		},
+		"field-name": {
+			"match": "(?<=^\tf\t\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z)\t(?:[A-z]\\w*\t)*)[A-z]\\w*",
+			"name": "variable.name.tinyv2"
+		},
+		"method-name": {
+			"patterns": [
+				{
+					"match": "(?<=^\tm\t\\((?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z|\\[)*\\)\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|V|Z)\t(?:[a-z]\\w*\t)*)[a-z]\\w*",
+					"name": "entity.name.function.tinyv2"
+				},
+				{
+					"match": "(?<=^\tm\t\\((?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z|\\[)*\\)\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|V|Z)\t(?:<init>\t)*)<init>",
+					"name": "entity.name.function.constructor.tinyv2"
+				}
+			]
+		},
+		"parameter-name": {
+			"match": "(?<=^\t\tp\t\\d+\t(?:[a-z]?\\w*\t)*)[a-z]\\w*",
+			"name": "variable.parameter.tinyv2"
+		},
+		"variable-name": {
+			"match": "(?<=^\t\tv\t\\d*\t\\d*\t(?:-1|\\d*)\t(?:[a-z]?\\w*\t)*)[a-z]\\w*",
+			"name": "variable.other.local.tinyv2"
+		},
+		"descriptors": {
+			"patterns": [
+				{
+					"include": "#field-descriptors"
+				},
+				{
+					"include": "#method-parameter-descriptors"
+				},
+				{
+					"include": "#method-return-descriptors"
+				}
+			]
+		},
+		"field-descriptors": {
+			"patterns": [
+				{
+					"match": "(?<=^\tf\t)\\[?(B|C|D|F|I|J|S|Z)",
+					"name": "storage.type.descriptor.tinyv2"
+				},
+				{
+					"begin": "(?<=^\tf\t)\\[?L",
+					"end": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.descriptor.tinyv2"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.terminator.semi-colon.tinyv2"
+						}
+					},
+					"patterns": [{
+						"match": "[A-z][\\w\/$]*",
+						"name": "entity.name.class.reference.tinyv2"
+					}]
+				}
+			]
+		},
+		"method-parameter-descriptors": {
+			"patterns": [
+				{
+					"match": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*)\\[?(B|C|D|F|I|J|S|Z)",
+					"name": "storage.type.descriptor.tinyv2"
+				},
+				{
+					"begin": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*)\\[?L",
+					"end": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.descriptor.tinyv2"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.terminator.semi-colon.tinyv2"
+						}
+					},
+					"patterns": [{
+						"match": "[A-z][\\w\/$]*",
+						"name": "entity.name.class.reference.tinyv2"
+					}]
+				}
+			]
+		},
+		"method-return-descriptors": {
+			"patterns": [
+				{
+					"match": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*\\))\\[?(B|C|D|F|I|J|S|V|Z)",
+					"name": "storage.type.descriptor.tinyv2"
+				},
+				{
+					"begin": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*\\))\\[?L",
+					"end": ";",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.descriptor.tinyv2"
+						}
+					},
+					"patterns": [{
+						"match": "[A-z][\\w\/$]*",
+						"name": "entity.name.class.reference.tinyv2"
+					}]
+				}
+			]
+		}
+	},
+	"scopeName": "text.tinyv2",
+	"firstLineMatch": "tiny"
+}

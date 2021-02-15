@@ -1,0 +1,40 @@
+{
+    "name": "vscode-tiny-mappings",
+    "displayName": "Tiny Mappings for VSCode",
+    "description": "",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "tinyv2",
+                "aliases": ["Tiny V2 Mappings", "tinyv2"],
+                "extensions": [".tiny"],
+                "configuration": "./tinyv2-language-configuration.json"
+            },
+            {
+                "id": "enigma-mapping",
+                "aliases": ["Enigma Mappings", "enigma-mapping"],
+                "extensions": [".mapping"],
+                "configuration": "./enigma-mapping-language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tinyv2",
+                "scopeName": "text.tinyv2",
+                "path": "./syntaxes/tinyv2.tmLanguage.json"
+            },
+            {
+                "language": "enigma-mapping",
+                "scopeName": "text.enigma-mapping",
+                "path": "./syntaxes/enigma-mapping.tmLanguage.json"
+            }
+        ]
+    }
+}
