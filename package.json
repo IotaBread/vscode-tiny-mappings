@@ -1,8 +1,19 @@
 {
     "name": "vscode-tiny-mappings",
     "displayName": "Tiny Mappings for VSCode",
-    "description": "",
+    "description": "Syntax highlighting for mapping files",
     "version": "0.1.0",
+    "publisher": "ByMartrixX",
+    "author": {
+        "name": "ByMartrixx"
+    },
+    "license": "MIT",
+    "keywords": ["tiny", "enigma", "mapping", "java", "fabric", "minecraft", "mc", "fabricmc"],
+    "icon": "icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ByMartrixx/vscode-tiny-mappings.git"
+    },
     "engines": {
         "vscode": "^1.53.0"
     },
