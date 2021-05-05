@@ -88,11 +88,15 @@
 		"field-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2})(B|C|D|F|I|J|S|Z)$",
+					"match": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2}\\[*)(B|C|D|F|I|J|S|Z)$",
 					"name": "storage.type.descriptor.enigma-mapping"
 				},
 				{
-					"begin": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2})L",
+					"match": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2})\\[+",
+					"name": "storage.modifier.array.descriptor.enigma-mapping"
+				},
+				{
+					"begin": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2}\\[*)L",
 					"end": "(;)$",
 					"beginCaptures": {
 						"0": {
