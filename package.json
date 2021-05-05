@@ -2,13 +2,22 @@
     "name": "vscode-tiny-mappings",
     "displayName": "Tiny Mappings for VSCode",
     "description": "Syntax highlighting for mapping files",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "ByMartrixX",
     "author": {
         "name": "ByMartrixx"
     },
     "license": "MIT",
-    "keywords": ["tiny", "enigma", "mapping", "java", "fabric", "minecraft", "mc", "fabricmc"],
+    "keywords": [
+        "tiny",
+        "enigma",
+        "mapping",
+        "java",
+        "fabric",
+        "minecraft",
+        "mc",
+        "fabricmc"
+    ],
     "icon": "icon.png",
     "repository": {
         "type": "git",
@@ -24,14 +33,24 @@
         "languages": [
             {
                 "id": "tinyv2",
-                "aliases": ["Tiny V2 Mappings", "tinyv2"],
-                "extensions": [".tiny"],
+                "aliases": [
+                    "Tiny V2 Mappings",
+                    "tinyv2"
+                ],
+                "extensions": [
+                    ".tiny"
+                ],
                 "configuration": "./tinyv2-language-configuration.json"
             },
             {
                 "id": "enigma-mapping",
-                "aliases": ["Enigma Mappings", "enigma-mapping"],
-                "extensions": [".mapping"],
+                "aliases": [
+                    "Enigma Mappings",
+                    "enigma-mapping"
+                ],
+                "extensions": [
+                    ".mapping"
+                ],
                 "configuration": "./enigma-mapping-language-configuration.json"
             }
         ],
