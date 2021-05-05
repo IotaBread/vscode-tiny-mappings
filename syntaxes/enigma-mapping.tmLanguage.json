@@ -44,21 +44,17 @@
 			}
 		},
 		"class": {
-			"match": "(?<=CLASS\\s+(?:[A-z][\\w\/]*\\s*)?)[A-z][\\w\/]*",
+			"match": "(?<=CLASS\\s+(?:[^\\s]+\\s+)?)[A-z_$][^\\s]*",
 			"name": "entity.name.class.enigma-mapping"
 		},
 		"field": {
 			"patterns": [
 				{
-					"match": "(?<=FIELD\\s+)[A-z]\\w*(?=\\s+(?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z))",
+					"match": "(?<=FIELD\\s+)[A-z_$][^\\s]*",
 					"name": "variable.name.enigma-mapping"
 				},
 				{
-					"match": "(?<=FIELD\\s+[A-z]\\w*\\s+)[A-z]\\w*(?=[ \t]+(?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z))",
-					"name": "variable.name.enigma-mapping"
-				},
-				{
-					"match": "(?<=FIELD\\s+)[A-z]\\w*(?=\\s+[A-z]\\w*[ \t]+(?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z))",
+					"match": "(?<=FIELD\\s+.*[^\\S\r\n]+)[A-z_$][^\\s]*(?![\\S\r\n])",
 					"name": "variable.name.enigma-mapping"
 				}
 			]
@@ -66,7 +62,7 @@
 		"method": {
 			"patterns": [
 				{
-					"match": "(?<=METHOD\\s+(?:[a-z]\\w*\\s*)?)[a-z]\\w*",
+					"match": "(?<=METHOD\\s+(?:[^\\s]+\\s+)?)[A-z_$][^\\s]*",
 					"name": "entity.name.function.enigma-mapping"
 				},
 				{
@@ -76,7 +72,7 @@
 			]
 		},
 		"arg": {
-			"match": "(?<=ARG\\s+\\d+\\s+)[a-z]\\w*",
+			"match": "(?<=ARG\\s+\\d+\\s+)[A-z_$][^\\s]*",
 			"name": "variable.parameter.enigma-mapping"
 		},
 		"descriptors": {
@@ -92,11 +88,11 @@
 		"field-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=FIELD\\s+[A-z]\\w*\\s+)(B|C|D|F|I|J|S|Z)$",
+					"match": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2})(B|C|D|F|I|J|S|Z)$",
 					"name": "storage.type.descriptor.enigma-mapping"
 				},
 				{
-					"begin": "(?<=FIELD\\s+[A-z]\\w*\\s+)L",
+					"begin": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2})L",
 					"end": "(;)$",
 					"beginCaptures": {
 						"0": {
@@ -109,29 +105,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/]*",
-						"name": "entity.name.class.reference.enigma-mapping"
-					}]
-				},
-				{
-					"match": "(?<=FIELD\\s+[A-z]\\w*\\s+[A-z]\\w*[ \t]+)(B|C|D|F|I|J|S|Z)",
-					"name": "storage.type.descriptor.enigma-mapping"
-				},
-				{
-					"begin": "(?<=FIELD\\s+[A-z]\\w*\\s+[A-z]\\w*[ \t]+)L",
-					"end": "(;)$",
-					"beginCaptures": {
-						"0": {
-							"name": "storage.type.descriptor.enigma-mapping"
-						}
-					},
-					"endCaptures": {
-						"1": {
-							"name": "punctuation.terminator.semi-colon.enigma-mapping"
-						}
-					},
-					"patterns": [{
-						"match": "[A-z][\\w\/]*",
+						"match": "[A-z_$][^\\s;]*",
 						"name": "entity.name.class.reference.enigma-mapping"
 					}]
 				}
@@ -150,15 +124,15 @@
 		"method-parameter-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z|\\[)*)(B|C|D|F|I|J|S|Z)",
+					"match": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*)(B|C|D|F|I|J|S|Z)",
 					"name": "storage.type.descriptor.enigma-mapping"
 				},
 				{
-					"match": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|S|Z)*)\\[(?=B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z)",
+					"match": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*)\\[(?![\\s)])",
 					"name": "storage.modifier.array.descriptor.enigma-mapping"
 				},
 				{
-					"begin": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z|\\[)*)L",
+					"begin": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*)L",
 					"end": ";",
 					"beginCaptures": {
 						"0": {
@@ -171,7 +145,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/]*",
+						"match": "[A-z_$][^\\s]*",
 						"name": "entity.name.class.reference.enigma-mapping"
 					}]
 				}
@@ -180,15 +154,15 @@
 		"method-return-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z|\\[)*\\)\\[?)(B|C|D|F|I|J|S|Z|V)",
+					"match": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*\\)\\[*)(B|C|D|F|I|J|S|Z|V)",
 					"name": "storage.type.descriptor.enigma-mapping"
 				},
 				{
-					"match": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z|\\[)*\\))\\[(?=B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z)",
+					"match": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*\\))\\[+(?![\\s)])",
 					"name": "storage.modifier.array.descriptor.enigma-mapping"
 				},
 				{
-					"begin": "(?<=METHOD\\s+(?:(?:[a-z]\\w*\\s+){1,2}|<init>\\s+)\\((?:B|C|D|F|I|J|L[A-z][\\w\/]*;|S|Z|\\[)*\\)\\[?)L",
+					"begin": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*\\)\\[*)L",
 					"end": "(;)$",
 					"beginCaptures": {
 						"0": {
@@ -201,7 +175,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/]*",
+						"match": "[A-z_$][^\\s;]*",
 						"name": "entity.name.class.reference.enigma-mapping"
 					}]
 				}
