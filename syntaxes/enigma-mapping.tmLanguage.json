@@ -29,7 +29,7 @@
 	],
 	"repository": {
 		"keywords": {
-			"match": "(?<=^\t*)(COMMENT|CLASS|FIELD|METHOD|ARG)",
+			"match": "(?<=^\\s*)(COMMENT|CLASS|FIELD|METHOD|ARG)",
 			"name": "keyword.other.enigma-mapping"
 		},
 		"comments": {
@@ -97,14 +97,14 @@
 				},
 				{
 					"begin": "(?<=FIELD\\s+(?:[^\\s]+\\s+){1,2}\\[*)L",
-					"end": "(;)$",
+					"end": ";",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.descriptor.enigma-mapping"
 						}
 					},
 					"endCaptures": {
-						"1": {
+						"0": {
 							"name": "punctuation.terminator.semi-colon.enigma-mapping"
 						}
 					},
@@ -149,7 +149,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z_$][^\\s]*",
+						"match": "[A-z_$][^\\s;]*",
 						"name": "entity.name.class.reference.enigma-mapping"
 					}]
 				}
@@ -167,14 +167,14 @@
 				},
 				{
 					"begin": "(?<=METHOD\\s+(?:[^\\s]*\\s+){1,2}\\([^\\s)]*\\)\\[*)L",
-					"end": "(;)$",
+					"end": ";",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.descriptor.enigma-mapping"
 						}
 					},
 					"endCaptures": {
-						"1": {
+						"0": {
 							"name": "punctuation.terminator.semi-colon.enigma-mapping"
 						}
 					},
