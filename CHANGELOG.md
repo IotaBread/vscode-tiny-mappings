@@ -23,3 +23,6 @@
 
 ## [0.2.4]
 - [Tiny mappings] Fix higlighting
+
+## [0.2.5]
+- [Tiny mappings] Fix `$` in field descriptor breaking highlighting

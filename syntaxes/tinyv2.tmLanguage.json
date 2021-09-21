@@ -124,22 +124,18 @@
 					"name": "storage.type.descriptor.tinyv2"
 				},
 				{
-					"begin": "(?<=^\tf\t)\\[*L",
-					"end": ";",
-					"beginCaptures": {
-						"0": {
+					"match": "(?<=^\tf\t)(\\[*L)([A-z_$][^\\s]*)(;)",
+					"captures": {
+						"1": {
 							"name": "storage.type.descriptor.tinyv2"
-						}
-					},
-					"endCaptures": {
-						"0": {
+						},
+						"2": {
+							"name": "entity.name.class.reference.tinyv2"
+						},
+						"3": {
 							"name": "punctuation.terminator.semi-colon.tinyv2"
 						}
-					},
-					"patterns": [{
-						"match": "[A-z_$][^\\s]*",
-						"name": "entity.name.class.reference.tinyv2"
-					}]
+					}
 				}
 			]
 		},
