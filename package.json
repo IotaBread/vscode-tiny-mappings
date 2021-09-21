@@ -2,7 +2,7 @@
     "name": "vscode-tiny-mappings",
     "displayName": "Tiny Mappings for VSCode",
     "description": "Syntax highlighting for mapping files",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "publisher": "ByMartrixX",
     "author": {
         "name": "ByMartrixx"
