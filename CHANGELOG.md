@@ -20,3 +20,6 @@
 
 ## [0.2.3]
 - [Tiny mappings] Improve tiny file highlighting
+
+## [0.2.4]
+- [Tiny mappings] Fix higlighting

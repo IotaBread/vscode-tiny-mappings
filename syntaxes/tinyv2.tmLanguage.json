@@ -87,7 +87,7 @@
 		"method-name": {
 			"patterns": [
 				{
-					"match": "(?<=^\tm\t\\([^\\s)]*).*[^\\S\r\n]+\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
+					"match": "(?<=^\tm\t\\([^\\s)]*\\).*[^\\S\r\n]+(?:[^\\s\r\n]*\t)*)[A-z_$][^\\s]*",
 					"name": "entity.name.function.tinyv2"
 				},
 				{
@@ -97,11 +97,11 @@
 			]
 		},
 		"parameter-name": {
-			"match": "(?<=^\t\tp\t\\d+\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
+			"match": "(?<=^\t\tp\t\\d+\t(?:[^\\s\r\n]*\t)*)[A-z_$][^\\s]*",
 			"name": "variable.parameter.tinyv2"
 		},
 		"variable-name": {
-			"match": "(?<=^\t\tv\t\\d*\t\\d*\t(?:-1|\\d*)\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
+			"match": "(?<=^\t\tv\t\\d*\t\\d*\t(?:-1|\\d*)\t(?:[^\\s\r\n]*\t)*)[A-z_$][^\\s]*",
 			"name": "variable.other.local.tinyv2"
 		},
 		"descriptors": {
