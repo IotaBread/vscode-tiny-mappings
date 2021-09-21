@@ -77,31 +77,31 @@
 			]
 		},
 		"class-name": {
-			"match": "(?<=^c\t(?:[A-z][\\w\/$]*\t)*)[A-z][\\w\/$]*",
+			"match": "(?<=^c\t(?:[^\\s]*\t)*)[A-z_$][^\\s]*",
 			"name": "entity.name.class.tinyv2"
 		},
 		"field-name": {
-			"match": "(?<=^\tf\t\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z)\t(?:[A-z]\\w*\t)*)[A-z]\\w*",
+			"match": "(?<=^\tf\t.*[^\\S\r\n]+)[A-z_$][^\\s]*",
 			"name": "variable.name.tinyv2"
 		},
 		"method-name": {
 			"patterns": [
 				{
-					"match": "(?<=^\tm\t\\((?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z|\\[)*\\)\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|V|Z)\t(?:[a-z]\\w*\t)*)[a-z]\\w*",
+					"match": "(?<=^\tm\t\\([^\\s)]*).*[^\\S\r\n]+\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
 					"name": "entity.name.function.tinyv2"
 				},
 				{
-					"match": "(?<=^\tm\t\\((?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z|\\[)*\\)\\[?(?:B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|V|Z)\t(?:<init>\t)*)<init>",
+					"match": "(?<=^\tm\t\\([^\\s)]*\\).*[^\\S\r\n]+\t(?:<init>\t)*)<init>",
 					"name": "entity.name.function.constructor.tinyv2"
 				}
 			]
 		},
 		"parameter-name": {
-			"match": "(?<=^\t\tp\t\\d+\t(?:[a-z]?\\w*\t)*)[a-z]\\w*",
+			"match": "(?<=^\t\tp\t\\d+\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
 			"name": "variable.parameter.tinyv2"
 		},
 		"variable-name": {
-			"match": "(?<=^\t\tv\t\\d*\t\\d*\t(?:-1|\\d*)\t(?:[a-z]?\\w*\t)*)[a-z]\\w*",
+			"match": "(?<=^\t\tv\t\\d*\t\\d*\t(?:-1|\\d*)\t(?:[A-z_$][^\\s]*\t)*)[A-z_$][^\\s]*",
 			"name": "variable.other.local.tinyv2"
 		},
 		"descriptors": {
@@ -120,11 +120,11 @@
 		"field-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=^\tf\t)\\[?(B|C|D|F|I|J|S|Z)",
+					"match": "(?<=^\tf\t)\\[*(B|C|D|F|I|J|S|Z)",
 					"name": "storage.type.descriptor.tinyv2"
 				},
 				{
-					"begin": "(?<=^\tf\t)\\[?L",
+					"begin": "(?<=^\tf\t)\\[*L",
 					"end": ";",
 					"beginCaptures": {
 						"0": {
@@ -137,7 +137,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/$]*",
+						"match": "[A-z_$][^\\s]*",
 						"name": "entity.name.class.reference.tinyv2"
 					}]
 				}
@@ -146,11 +146,11 @@
 		"method-parameter-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*)\\[?(B|C|D|F|I|J|S|Z)",
+					"match": "(?<=^\tm\t\\([^\\s)]*)\\[*(B|C|D|F|I|J|S|Z)",
 					"name": "storage.type.descriptor.tinyv2"
 				},
 				{
-					"begin": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*)\\[?L",
+					"begin": "(?<=^\tm\t\\([^\\s)]*)\\[*L",
 					"end": ";",
 					"beginCaptures": {
 						"0": {
@@ -163,7 +163,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/$]*",
+						"match": "[A-z_$][^\\s;]*",
 						"name": "entity.name.class.reference.tinyv2"
 					}]
 				}
@@ -172,11 +172,11 @@
 		"method-return-descriptors": {
 			"patterns": [
 				{
-					"match": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*\\))\\[?(B|C|D|F|I|J|S|V|Z)",
+					"match": "(?<=^\tm\t\\([^\\s)]*\\))\\[*(B|C|D|F|I|J|S|V|Z)",
 					"name": "storage.type.descriptor.tinyv2"
 				},
 				{
-					"begin": "(?<=^\tm\t\\((?:\\[?(B|C|D|F|I|J|L[A-z][\\w\/$]*;|S|Z))*\\))\\[?L",
+					"begin": "(?<=^\tm\t\\([^\\s)]*\\))\\[*L",
 					"end": ";",
 					"beginCaptures": {
 						"0": {
@@ -184,7 +184,7 @@
 						}
 					},
 					"patterns": [{
-						"match": "[A-z][\\w\/$]*",
+						"match": "[A-z_$][^\\s;]*",
 						"name": "entity.name.class.reference.tinyv2"
 					}]
 				}

@@ -17,3 +17,6 @@
 
 - [Enigma mappings] Fix keyword highlighting when using spaces instead of tabs
 - [Enigma mappings] Fix some reference descriptors being matched and highlighted indefinitely
+
+## [0.2.3]
+- [Tiny mappings] Improve tiny file highlighting
